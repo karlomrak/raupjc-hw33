@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Completed";
+    Layout = "_Layout";
+}
+@using WebApplication.Models
+@model WebApplication.Models.CompletedViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Completed Todos</title>
+</head>
+<body>
+    <div>
+        <h1 style="margin-top: 1em; margin-bottom: 1em">Completed Todos</h1>
+        @foreach (var item in @Model.CompletedModels)
+        {
+            <h5 style="margin-top: 1em"><b>@item.Text</b></h5>
+            <h6>@item.DateCompleted</h6>
+            @Html.ActionLink("Remove from completed", "RemoveFromCompleted", item)
+        }
+
+    </div>
+    <a asp-controller="Todo" asp-action="Index" style="margin-top: 5em; margin-bottom: 5em"><b>Back</b></a>
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+@{
+    ViewData["Title"] = "Add";
+    Layout = "_Layout";
+}
+@using WebApplication.Models
+@model WebApplication.Models.AddTodoViewModel
+<html>
+<head>
+    <title>Add TodoItem</title>
+</head>
+<body>
+<div>
+    <h6></h6>
+    <form asp-action="Add" method="post">
+        <dl class="dl-horizontal">
+            <dt>Name:</dt>
+            <dd>
+                <input asp-for="Text" />
+                <span asp-validation-for="Text"></span>
+            </dd>
+            <br/>
+            <dt>Date due:</dt>
+            <dd>
+                <input asp-for="DateDue"/>
+                <span asp-validation-for="DateDue"></span> 
+            </dd>
+            <br/>
+            <dt>Labels:</dt>
+            <dd>
+                <input asp-for="Label"/>
+                <span asp-validation-for="Label"></span>
+            </dd>
+            <br/>
+            <dd> <input type="submit" /></dd>
+        </dl>
+               
+    </form>
+</div>
+<a asp-controller="Todo" asp-action="Index" style="margin-top: 5em; margin-bottom: 5em"><b>Back</b></a>
+</body>
+</html>

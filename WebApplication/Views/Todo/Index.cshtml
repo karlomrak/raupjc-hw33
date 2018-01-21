@@ -1,0 +1,34 @@
+﻿@using ToDoRepository
+@using WebApplication.Models
+@model WebApplication.Models.IndexViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Active tasks</title>
+</head>
+<body>
+<h1 style="margin-top: 1em">Todo</h1>
+<br/>
+<a asp-controller="Todo" asp-action="Add" style="margin-right: 5em; margin-top: 10em; margin-bottom: 5em"><b>Add new todo</b></a>
+<a asp-controller="Todo" asp-action="Completed" style="margin-top: 5em; margin-bottom: 5em"><b>   See completed todos</b></a>
+@foreach (var item in Model.TodoViewModels)
+{
+    <div >
+        <p style="margin-top: 40px">
+            <b>@item.Text</b>
+            <b><font style="color: red; margin-left: 5px">(@item.DaysRemaining())</font></b>
+        </p>  
+        <p style="margin-right: 50em"><b>@item.Labels</b></p>
+        
+    </div>
+    <div >
+        <h6 >@item.DateDue</h6>
+        <h6>@Html.ActionLink("Mark as completed", "MarkAsCompleted", new { itemId = item.Id })</h6>
+    </div>
+}
+</body>
+</html>
